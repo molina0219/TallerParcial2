@@ -1,0 +1,9 @@
+rootProject.name = 'MultiprojectParcial2'
+
+include 'showtimes-service'
+include 'movies-service'
+include 'user-service'
+include 'config-service'
+include 'eureka-service'
+include 'gateway-service'
+include 'admin-service'

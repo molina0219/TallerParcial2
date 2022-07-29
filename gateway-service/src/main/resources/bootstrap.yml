@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    config:
+      uri: http://localhost:9000
+      username: molina0219
+      password: Nepentes0892
+      enabled: true

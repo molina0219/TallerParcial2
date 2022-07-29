@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/molina0219/StoreMultiprojectConfigData.git
+  security:
+    user:
+      name: molina0219
+      password: Nepentes0892
+server:
+  port: 9000
+
+

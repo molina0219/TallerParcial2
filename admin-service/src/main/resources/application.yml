@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: admin-service
+  security:
+    user:
+      name: molina0219
+      password: Nepentes0892
+server:
+  port: 9020
