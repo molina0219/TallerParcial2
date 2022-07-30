@@ -1,10 +1,10 @@
-package co.com.poli.customerservice.controller;
+package co.com.poli.showtimesservice.controller;
 
-import co.com.poli.customerservice.helpers.ErrorMessage;
-import co.com.poli.customerservice.helpers.Response;
-import co.com.poli.customerservice.helpers.ResponseBuild;
-import co.com.poli.customerservice.persistence.entity.Movies;
-import co.com.poli.customerservice.service.MoviesService;
+import co.com.poli.showtimesservice.helpers.ErrorMessage;
+import co.com.poli.showtimesservice.helpers.Response;
+import co.com.poli.showtimesservice.helpers.ResponseBuild;
+import co.com.poli.showtimesservice.persistence.entity.Booking;
+import co.com.poli.showtimesservice.service.BookingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,38 +18,30 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/bookings")
 @RequiredArgsConstructor
-public class MoviesController {
+public class ShowtimeController {
 
-    private final MoviesService customerService;
+    private final BookingService bookingService;
     private final ResponseBuild builder;
 
-    @PostMapping
-    public Response save(@Valid @RequestBody Movies movies, BindingResult result){
-        if(result.hasErrors()){
-            return builder.failed(this.formatMessage(result));
-        }
-        customerService.save(movies);
-        return builder.success(movies);
-    }
-    @DeleteMapping("/{numberID}")
-    public Response delete(@PathVariable("numberID") long numberID){
-        Movies movies = (Movies) findByID(numberID).getData();
-        if(movies ==null){
-            return builder.failed("Not found");
-        }
-        return builder.success(movies);
+    @GetMapping("/{id}")
+    public Response findByID(@PathVariable("id") Long id) {
+        return builder.success(bookingService.findById(id));
     }
 
     @GetMapping
-    public Response findAll(){
-        return builder.success(customerService.findAll());
+    public Response findAll() {
+        return builder.success(bookingService.findAll());
     }
 
-    @GetMapping("/{id}")
-    public Response findByID(@PathVariable("id") Long id){
-        return builder.success(customerService.findById(id));
+    @PostMapping
+    public Response save(@Valid @RequestBody Booking showtime, BindingResult result) {
+        if (result.hasErrors()) {
+            return builder.failed(this.formatMessage(result));
+        }
+        bookingService.save(showtime);
+        return builder.success(showtime);
     }
 
     private String formatMessage(BindingResult result) {

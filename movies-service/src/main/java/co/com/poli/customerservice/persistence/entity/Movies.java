@@ -5,27 +5,30 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "customers")
+@Table(name = "movies")
 public class Movies {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @NotEmpty(message = "El nit/numero no puede ser vacio")
-    @Column(name = "number_id", unique = true,nullable = true)
-    private String numberID;
-    @NotEmpty(message = "El nombre no puede ser vacio")
-    @Column(name = "name")
-    private String name;
-    @Email(message = "No es una direccion de email valida")
-    @Column(name = "email")
-    private String email;
+    @NotEmpty(message = "El titulo de la pelicula no puede ser vacio")
+    @Column(name = "Title")
+    private String title;
+    @NotEmpty(message = "El titulo de la pelicula no puede ser vacio")
+    @Column(name = "director")
+    private String director;
+    @Min(1)
+    @Max(5)
+    @Column(name = "rating")
+    private int rating;
 
     @Override
     public boolean equals(Object o) {
