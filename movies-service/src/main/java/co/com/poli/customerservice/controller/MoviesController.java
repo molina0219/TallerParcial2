@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/movies")
 @RequiredArgsConstructor
 public class MoviesController {
 
@@ -33,7 +33,7 @@ public class MoviesController {
         customerService.save(movies);
         return builder.success(movies);
     }
-    @DeleteMapping("/{numberID}")
+    @DeleteMapping("/{id}")
     public Response delete(@PathVariable("numberID") long numberID){
         Movies movies = (Movies) findByID(numberID).getData();
         if(movies ==null){

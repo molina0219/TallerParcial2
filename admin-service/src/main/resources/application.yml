@@ -3,7 +3,7 @@ spring:
     name: admin-service
   security:
     user:
-      name: molina0219
-      password: Nepentes0892
+      name: admin
+      password: admin
 server:
   port: 9020

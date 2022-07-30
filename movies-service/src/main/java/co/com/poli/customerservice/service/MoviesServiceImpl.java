@@ -38,9 +38,4 @@ public class MoviesServiceImpl implements MoviesService {
         return moviesRepository.findById(id).orElse(null);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Movies findByNumberID(String numberID) {
-        return moviesRepository.findByNumberID(numberID);
-    }
 }

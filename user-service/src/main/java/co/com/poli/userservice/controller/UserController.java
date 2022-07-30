@@ -52,7 +52,7 @@ public class UserController {
                     err.put(error.getField(), error.getDefaultMessage());
                     return err;
                 }).collect(Collectors.toList());
-        ErrorMessage errorMessage = ErrorMessage.builder()
+            ErrorMessage errorMessage = ErrorMessage.builder()
                 .error(errors).build();
         ObjectMapper mapper = new ObjectMapper();
         String json = "";

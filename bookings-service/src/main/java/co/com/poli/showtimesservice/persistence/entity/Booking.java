@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "showtimes")
+@Table(name = "bookings")
 public class Booking {
 
     @Id
@@ -18,8 +17,11 @@ public class Booking {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "userid", nullable = false)
+    private long userid;
+
+    @Column(name = "showtimeid", nullable = false)
+    private long showtimeid;
 
     @Transient
     private User[] user;

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/bookings")
 @RequiredArgsConstructor
-public class ShowtimeController {
+public class BookingController {
 
     private final BookingService bookingService;
     private final ResponseBuild builder;

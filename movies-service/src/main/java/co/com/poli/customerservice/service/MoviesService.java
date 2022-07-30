@@ -10,5 +10,4 @@ public interface MoviesService {
     void delete(Movies movies);
     List<Movies> findAll();
     Movies findById(Long id);
-    Movies findByNumberID(String numberID);
 }

@@ -51,7 +51,6 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe((rememberMe) -> rememberMe.key(UUID.randomUUID().toString()).tokenValiditySeconds(1209600));
     }
 
-    // Required to provide UserDetailsService for "remember functionality"
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser(security.getUser().getName())
