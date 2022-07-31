@@ -32,6 +32,7 @@ subprojects {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        //compile files('C:/Users/User/IdeaProjects/HelperParcial2/out/artifacts/HelperParcial2_jar/HelperParcial2.jar')
     }
 
     test {

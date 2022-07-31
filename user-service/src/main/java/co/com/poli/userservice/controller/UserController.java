@@ -1,10 +1,14 @@
 package co.com.poli.userservice.controller;
 
+//import co.com.poli.parcial2.helperparcial2.Helper.ErrorMessage;
+//import co.com.poli.parcial2.helperparcial2.Helper.Response;
+//import co.com.poli.parcial2.helperparcial2.Helper.ResponseBuild;
 import co.com.poli.userservice.helpers.ErrorMessage;
 import co.com.poli.userservice.helpers.Response;
 import co.com.poli.userservice.helpers.ResponseBuild;
 import co.com.poli.userservice.persistence.entity.User;
 import co.com.poli.userservice.service.UserService;
+import co.com.poli.userservice.service.dto.UserInDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -25,17 +29,23 @@ public class UserController {
     private final UserService userService;
     private final ResponseBuild builder;
 
+
     @PostMapping
-    public Response save(@RequestBody User user, BindingResult result){
+    public Response createUser(@RequestBody UserInDTO userInDTO, BindingResult result){
         if(result.hasErrors()){
             return builder.failed(this.formatMessage(result));
         }
-        userService.save(user);
-        return builder.success(user);
+        this.userService.createUser(userInDTO);
+        return builder.success(userInDTO);
     }
     @GetMapping
     public Response findAll(){
         return builder.success(userService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public Response findByID(@PathVariable("id") Long id){
+        return builder.success(userService.findById(id));
     }
 
     @DeleteMapping("/{id}")
